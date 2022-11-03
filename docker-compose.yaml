@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    volumes:
+      - ./influxdb2/data:/var/lib/influxdb2
+      - ./influxdb2/config:/etc/influxdb2
+    env_file:
+      - .env
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - 8086:8086
+    hostname: influxdb
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    environment:
+      - TZ='Eurpoe/London'
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    stdin_open: true
+    tty: true
+    ports:
+      - 1883:1883
+      - 9001:9001
+    hostname: mosquitto
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    depends_on:
+      - influxdb
+    user: "$UID:$GID"
+    volumes:
+      - ./grafana:/var/lib/grafana:rw
+    stdin_open: true
+    tty: true
+    ports:
+      - 3000:3000
+    hostname: grafana
