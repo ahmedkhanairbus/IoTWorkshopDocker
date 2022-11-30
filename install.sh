@@ -28,7 +28,7 @@ allow_anonymous false
 ENDOFFILE
 
 cat ./mosquitto/log/mosquitto.log
-cat .env
+touch .env
 
 docker compose up -d
 PSID=$(docker ps --filter "name=mosquitto"  --format "{{.ID}}")
@@ -37,4 +37,3 @@ echo "Type in the following commands and then type a password. The password is h
 echo -e "\e[1;37m> \e[0;32mmosquitto_passwd -c /mosquitto/config/mosquitto.passwd airbus"
 echo -e "\e[1;37m> \e[0;32mexit"
 docker exec -it $PSID sh
-
