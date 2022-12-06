@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   FlaskServerWK1:
-    image: tabongazifodyacap/ab_flaskwk1_virtfansim:1.0.2.1
+    image: tabongazifodyacap/ab_flaskwk1_virtfansim:1.0.2.3
     container_name: FlaskServerWK1
     environment:
       - TZ='Eurpoe/London'
