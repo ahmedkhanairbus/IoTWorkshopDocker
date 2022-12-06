@@ -1,4 +1,10 @@
+touch .env
+
+mkdir -p ./mosquitto/log
+cat ./mosquitto/log/mosquitto.log
+
 mkdir -p ./mosquitto/config
+touch ./mosquitto/config/mosquitto.passwd 
 cat > ./mosquitto/config/mosquitto.conf <<ENDOFFILE
 ###############Listener###############
 
@@ -27,9 +33,6 @@ allow_anonymous false
 
 ENDOFFILE
 
-cat ./mosquitto/log/mosquitto.log
-touch .env
-touch ./mosquitto/config/mosquitto.passwd 
 
 docker compose up -d
 PSID=$(docker ps --filter "name=mosquitto"  --format "{{.ID}}")
