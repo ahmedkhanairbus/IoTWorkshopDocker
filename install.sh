@@ -1,7 +1,7 @@
 touch .env
 
 mkdir -p ./mosquitto/log
-cat ./mosquitto/log/mosquitto.log
+touch ./mosquitto/log/mosquitto.log
 
 mkdir -p ./mosquitto/config
 touch ./mosquitto/config/mosquitto.passwd 
