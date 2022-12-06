@@ -1,43 +1,5 @@
 version: "3.8"
 services:
-  FlaskServerWK1:
-    image: tabongazifodyacap/ab_flaskwk1_virtfansim:1.0.2.3
-    container_name: FlaskServerWK1
-    environment:
-      - TZ='Eurpoe/London'
-    stdin_open: true
-    tty: true
-    ports:
-      - 5000:5000
-
-  influxdb:
-    image: influxdb:latest
-    container_name: influxdb
-    volumes:
-      - ./influxdb2/data:/var/lib/influxdb2
-      - ./influxdb2/config:/etc/influxdb2
-    env_file:
-      - .env
-    restart: unless-stopped
-    stdin_open: true
-    tty: true
-    ports:
-      - 8086:8086
-    hostname: influxdb
-
-  grafana:
-    image: grafana/grafana-oss:latest
-    container_name: grafana
-    depends_on:
-      - influxdb
-    volumes:
-      - ./grafana:/var/lib/grafana:rw
-    stdin_open: true
-    tty: true
-    ports:
-      - 3000:3000
-    hostname: grafana
-
   mosquitto:
     image: eclipse-mosquitto:latest
     container_name: mosquitto
