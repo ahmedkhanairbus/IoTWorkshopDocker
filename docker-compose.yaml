@@ -17,7 +17,7 @@ services:
     hostname: mosquitto
     
   FlaskServerWK1:
-    image: tabongazifodyacap/ab_flaskwk1_virtfansim:1.0.2.4
+    image: tabongazifodyacap/ab_flaskwk1_virtfansim:latest
     container_name: FlaskServerWK1
     environment:
       - TZ='Eurpoe/London'
