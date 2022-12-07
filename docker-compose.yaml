@@ -38,3 +38,18 @@ services:
     ports:
       - 3000:3000
     hostname: grafana
+  
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    volumes:
+      - ./influxdb2/data:/var/lib/influxdb2
+      - ./influxdb2/config:/etc/influxdb2
+    env_file:
+      - .env
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - 8086:8086
+    hostname: influxdb
