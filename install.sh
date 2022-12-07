@@ -3,6 +3,8 @@ touch .env
 mkdir -p ./mosquitto/log
 touch ./mosquitto/log/mosquitto.log
 
+chown 472:472 /data/grafana2
+
 mkdir -p ./mosquitto/config
 touch ./mosquitto/config/mosquitto.passwd 
 cat > ./mosquitto/config/mosquitto.conf <<ENDOFFILE
