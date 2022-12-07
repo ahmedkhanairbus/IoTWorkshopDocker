@@ -35,6 +35,7 @@ services:
       - ./grafana:/var/lib/grafana:rw
     stdin_open: true
     tty: true
+    user: "472"
     ports:
       - 3000:3000
     hostname: grafana
