@@ -25,3 +25,16 @@ services:
     tty: true
     ports:
       - 5000:5000
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    depends_on:
+      - influxdb
+    volumes:
+      - ./grafana:/var/lib/grafana:rw
+    stdin_open: true
+    tty: true
+    ports:
+      - 3000:3000
+    hostname: grafana
