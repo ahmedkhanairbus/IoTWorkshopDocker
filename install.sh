@@ -8,7 +8,7 @@ touch ./mosquitto/config/mosquitto.passwd
 cat > ./mosquitto/config/mosquitto.conf <<ENDOFFILE
 ###############Listener###############
 
-listener 1883 127.0.0.1
+listener 1883 0.0.0.0
 ### 1883 is the default port for Mosquitto,  0.0.0.0 means it will only run on the local network. No port forwarding is required.
 
 #cafile <path to ca file>
