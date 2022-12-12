@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mosquitto:
-    image: eclipse-mosquitto:latest
+    image: eclipse-mosquitto:2.0.15
     container_name: mosquitto
     environment:
       - TZ='Eurpoe/London'
@@ -27,7 +27,7 @@ services:
       - 5000:5000
 
   grafana:
-    image: grafana/grafana-oss:latest
+    image: grafana/grafana-oss:9.3.1
     container_name: grafana
     depends_on:
       - influxdb
@@ -41,7 +41,7 @@ services:
     hostname: grafana
 
   influxdb:
-    image: influxdb:latest
+    image: influxdb:1.8.10
     container_name: influxdb
     volumes:
       - ./influxdb2/data:/var/lib/influxdb2
@@ -51,7 +51,7 @@ services:
     environment:
       - INFLUXDB_DB=db0
       - INFLUXDB_ADMIN_USER=airbus
-      - INFLUXDB_ADMIN_PASSWORD=shed
+      - INFLUXDB_ADMIN_PASSWORD=colliderspace
     restart: unless-stopped
     stdin_open: true
     tty: true
