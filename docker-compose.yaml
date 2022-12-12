@@ -58,6 +58,10 @@ services:
     volumes:
       - ./influxdb2/data:/var/lib/influxdb2
       - ./influxdb2/config:/etc/influxdb2
+    environment:
+      - INFLUXDB_DB=ab_plants
+      - INFLUXDB_ADMIN_USER=airbus
+      - INFLUXDB_ADMIN_PASS=colliderspace
     env_file:
       - .env
     restart: unless-stopped
