@@ -41,22 +41,16 @@ services:
     hostname: grafana
 
   influxdb:
-    image: influxdb:1.8.10
+    image: influxdb:2.3.0
     container_name: influxdb
     volumes:
       - ./influxdb2/data:/var/lib/influxdb2
       - ./influxdb2/config:/etc/influxdb2
     env_file:
       - .env
-    environment:
-      - INFLUXDB_DB=db0
-      - INFLUXDB_ADMIN_USER=airbus
-      - INFLUXDB_ADMIN_PASSWORD=colliderspace
-      - INFLUXDB_ADMIN_HTTPS_ENABLED
     restart: unless-stopped
     stdin_open: true
     tty: true
     ports:
       - 8086:8086
-      - 8083:8083
     hostname: influxdb
