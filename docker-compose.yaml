@@ -38,6 +38,20 @@ services:
     env_file:
       - .env
 
+  grafana:
+    image: grafana/grafana-oss:9.3.1
+    container_name: grafana
+    depends_on:
+      - influxdb
+    volumes:
+      - ./grafana:/var/lib/grafana:rw
+    stdin_open: true
+    tty: true
+    user: "472"
+    ports:
+      - 3000:3000
+    hostname: grafana
+
   influxdb:
     image: influxdb:2.5.1
     container_name: influxdb
