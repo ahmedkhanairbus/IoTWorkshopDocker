@@ -26,6 +26,18 @@ services:
     ports:
       - 5000:5000
 
+  InfluxDBClient:
+    image: tabongazifodyacap/ab_influxdbclient:latest
+    container_name: InfluxDBClient
+    environment:
+      - TZ='Eurpoe/London'
+    stdin_open: true
+    tty: true
+    ports:
+      - 5005:5005
+    env_file:
+      - .env
+
   grafana:
     image: grafana/grafana-oss:9.3.1
     container_name: grafana
