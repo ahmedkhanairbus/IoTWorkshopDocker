@@ -25,3 +25,36 @@ services:
     tty: true
     ports:
       - 5000:5000
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    depends_on:
+      - influxdb
+    volumes:
+      - ./grafana:/var/lib/grafana:rw
+    stdin_open: true
+    tty: true
+    user: "472"
+    ports:
+      - 3000:3000
+    hostname: grafana
+
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    volumes:
+      - ./influxdb2/data:/var/lib/influxdb2
+      - ./influxdb2/config:/etc/influxdb2
+    env_file:
+      - .env
+    environment:
+      - INFLUXDB_DB=db0
+      - INFLUXDB_ADMIN_USER=airbus
+      - INFLUXDB_ADMIN_PASSWORD=shed
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - 8086:8086
+    hostname: influxdb
