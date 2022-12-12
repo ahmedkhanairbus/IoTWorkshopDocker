@@ -52,6 +52,7 @@ services:
       - INFLUXDB_DB=db0
       - INFLUXDB_ADMIN_USER=airbus
       - INFLUXDB_ADMIN_PASSWORD=colliderspace
+      - INFLUXDB_ADMIN_HTTPS_ENABLED
     restart: unless-stopped
     stdin_open: true
     tty: true
