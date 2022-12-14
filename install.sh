@@ -38,9 +38,4 @@ ENDOFFILE
 
 
 docker compose up -d
-PSID=$(docker ps --filter "name=mosquitto"  --format "{{.ID}}")
-echo -e "\e[0;32m################################ \e[0;31mIMPORTANT! \e[0;32m################################"
-echo "Type in the following commands and after that type a password. The password is hidden so be careful! Remember this password you will need it:"
-echo -e "\e[1;37m> \e[0;32mmosquitto_passwd -c /mosquitto/config/mosquitto.passwd airbus"
-echo -e "\e[1;37m> \e[0;32mexit"
-docker exec -it $PSID sh
+docker exec mosquitto mosquitto_passwd -b /mosquitto/config/mosquitto.passwd airbus shed
