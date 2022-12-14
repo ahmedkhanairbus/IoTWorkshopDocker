@@ -8,6 +8,7 @@ chown 472:472 ./grafana
 
 mkdir -p ./mosquitto/config
 touch ./mosquitto/config/mosquitto.passwd 
+chown 1883:1883 ./mosquitto/config/mosquitto.passwd 
 cat > ./mosquitto/config/mosquitto.conf <<ENDOFFILE
 ###############Listener###############
 
@@ -38,4 +39,4 @@ ENDOFFILE
 
 
 docker compose up -d
-sudo docker exec mosquitto mosquitto_passwd -c -b ./mosquitto/config/mosquitto.passwd airbus shed
+docker exec mosquitto mosquitto_passwd -c -b ./mosquitto/config/mosquitto.passwd airbus shed
