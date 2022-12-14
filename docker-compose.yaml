@@ -3,6 +3,7 @@ services:
   mosquitto:
     image: eclipse-mosquitto:2.0.15
     container_name: mosquitto
+    restart: always
     environment:
       - TZ='Eurpoe/London'
     volumes:
@@ -19,6 +20,7 @@ services:
   FlaskServerWK1:
     image: tabongazifodyacap/ab_flaskwk1_virtfansim:latest
     container_name: FlaskServerWK1
+    restart: always
     environment:
       - TZ='Eurpoe/London'
     stdin_open: true
@@ -28,7 +30,8 @@ services:
 
   InfluxDBClient:
     image: tabongazifodyacap/ab_influxdbclient:latest
-    container_name: InfluxDBClient
+    container_name: InfluxDBClient    
+    restart: always
     environment:
       - TZ='Eurpoe/London'
     stdin_open: true
@@ -51,6 +54,7 @@ services:
     ports:
       - 3000:3000
     hostname: grafana
+    restart: always
 
   influxdb:
     image: influxdb:1.8.10
@@ -64,7 +68,7 @@ services:
       - INFLUXDB_ADMIN_PASS=colliderspace
     env_file:
       - .env
-    restart: unless-stopped
+    restart: always
     stdin_open: true
     tty: true
     ports:
