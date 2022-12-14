@@ -38,4 +38,4 @@ ENDOFFILE
 
 
 docker compose up -d
-docker exec mosquitto mosquitto_passwd -b /mosquitto/config/mosquitto.passwd airbus shed
+docker exec mosquitto mosquitto_passwd -c -b /mosquitto/config/mosquitto.passwd airbus shed
